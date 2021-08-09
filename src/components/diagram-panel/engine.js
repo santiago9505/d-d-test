@@ -2,9 +2,6 @@ import React from 'react';
 import * as RJD from '../../../lib/main';
 import { ImageNodeNodeWidgetFactory } from '../nodes/imagenode/ImageNodeWidgetFactory';
 import { ImageNodeFactory } from '../nodes/imagenode/ImageNodeInstanceFactories';
-import { InputWidgetFactory } from '../nodes/input/InputWidgetFactory';
-import { InputNodeFactory } from '../nodes/input/InputInstanceFactories';
-import { ImagePortFactory } from '../nodes/custom/ImagePortInstanceFactory';
 
 // Setup the diagram engine
 export const engine = new RJD.DiagramEngine();

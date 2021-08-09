@@ -4,8 +4,6 @@ import Model from './Model'
 import ContentEditor from './content/ContentEditor';
 import NodeEditor from './node/NodeEditor';
 import PortsEditor from './ports/PortsEditor';
-import { InputNodeModel } from '../nodes/input/InputNodeModel';
-
 class PropsEditor extends React.Component {
     constructor(props) {
         super(props);
@@ -64,7 +62,7 @@ class PropsEditor extends React.Component {
     }
 
     createPort() {
-        const im = new InputNodeModel('input');
+        //const im = new InputNodeModel('input');
         im.deSerialize(this.props.selectedNode);
 
         const id = Object.keys(this.props.selectedNode.ports).length;
