@@ -4,6 +4,7 @@ import Model from './Model'
 import ContentEditor from './content/ContentEditor';
 import NodeEditor from './node/NodeEditor';
 import PortsEditor from './ports/PortsEditor';
+
 class PropsEditor extends React.Component {
     constructor(props) {
         super(props);
