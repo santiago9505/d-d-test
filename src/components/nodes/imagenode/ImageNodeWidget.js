@@ -1,16 +1,16 @@
-import React from 'react';
-import * as RJD from '../../../../lib/main';
-import { ImageNodeModel } from './ImageNodeModel';
+import React from "react";
+import * as RJD from "../../../../lib/main";
+import { ImageNodeModel } from "./ImageNodeModel";
 
 export class ImageNodeWidget extends React.Component {
   static defaultProps = {
     node: {
-      name: '',
+      name: "",
       image: {
-        src: '',
-        alt: ''
-      }
-    }
+        src: "",
+        alt: "",
+      },
+    },
   };
 
   onRemove() {
@@ -27,7 +27,9 @@ export class ImageNodeWidget extends React.Component {
       inputNode = new ImageNodeModel(node.name, color);
     }
 
-    return inputNode.getInPort ? <RJD.DefaultPortLabel model={inputNode.getInPort()} key='in-port' /> : null;
+    return inputNode.getInPort ? (
+      <RJD.DefaultPortLabel model={inputNode.getInPort()} key="in-port" />
+    ) : null;
   }
 
   getOutPort() {
@@ -38,7 +40,9 @@ export class ImageNodeWidget extends React.Component {
       outputNode = new ImageNodeModel(node.name, color);
     }
 
-    return outputNode.getOutPort ? <RJD.DefaultPortLabel model={outputNode.getOutPort()} key='out-port' /> : null;
+    return outputNode.getOutPort ? (
+      <RJD.DefaultPortLabel model={outputNode.getOutPort()} key="out-port" />
+    ) : null;
   }
 
   render() {
@@ -46,21 +50,19 @@ export class ImageNodeWidget extends React.Component {
     const { title, image } = node.content;
 
     return (
-      <div className='image-node'>
+      <div className="image-node">
         <div className="node-graphic">
-          {!displayOnly ? <div className='in'>
-              {this.getInPort()}
-            </div> : null }
-            <div className="node-content">
-              <img src={ "assets/" + image.src } alt={ image.alt } /> 
-              
-            </div>
-          {!displayOnly ? <div className='out'>
-            {this.getOutPort()}
-          </div> : null }
+          {!displayOnly ? <div className="in">{this.getInPort()}</div> : null}
+          <div className="node-content">
+            <img src={"images/" + image.src} alt={image.alt} />
+          </div>
+          {!displayOnly ? <div className="out">{this.getOutPort()}</div> : null}
         </div>
-        <div className='name'>
-          { title }{!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
+        <div className="name">
+          {title}
+          {!displayOnly ? (
+            <div className="fa fa-close" onClick={this.onRemove.bind(this)} />
+          ) : null}
         </div>
       </div>
     );
