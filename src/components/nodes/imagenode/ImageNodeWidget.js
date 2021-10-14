@@ -1,11 +1,11 @@
-import React from 'react';
-import * as RJD from '../../../../lib/main';
-import { ImageNodeModel } from './ImageNodeModel';
+import React from "react";
+import * as RJD from "../../../../lib/main";
+import { ImageNodeModel } from "./ImageNodeModel";
 
 export class ImageNodeWidget extends React.Component {
   static defaultProps = {
     node: null,
-    color: 'rgb(224, 98, 20)'
+    color: "rgb(224, 98, 20)",
   };
 
   onRemove() {
@@ -22,7 +22,9 @@ export class ImageNodeWidget extends React.Component {
       inputNode = new ImageNodeModel(node.name, color);
     }
 
-    return inputNode.getInPort ? <RJD.DefaultPortLabel model={inputNode.getInPort()} key='in-port' /> : null;
+    return inputNode.getInPort ? (
+      <RJD.DefaultPortLabel model={inputNode.getInPort()} key="in-port" />
+    ) : null;
   }
 
   getOutPort() {
@@ -33,7 +35,9 @@ export class ImageNodeWidget extends React.Component {
       outputNode = new ImageNodeModel(node.name, color);
     }
 
-    return outputNode.getOutPort ? <RJD.DefaultPortLabel model={outputNode.getOutPort()} key='out-port' /> : null;
+    return outputNode.getOutPort ? (
+      <RJD.DefaultPortLabel model={outputNode.getOutPort()} key="out-port" />
+    ) : null;
   }
 
   render() {
@@ -45,20 +49,16 @@ export class ImageNodeWidget extends React.Component {
     }
 
     return (
-      <div className='basic-node' style={style}>
-        <div className='title'>
-          <div className='name'>
-            image
-          </div>
-          {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
+      <div className="basic-node" style={style}>
+        <div className="title">
+          <div className="name">image</div>
+          {!displayOnly ? (
+            <div className="fa fa-close" onClick={this.onRemove.bind(this)} />
+          ) : null}
         </div>
-        <div className='ports'>
-          <div className='in'>
-            {this.getInPort()}
-          </div>
-          <div className='out'>
-            {this.getOutPort()}
-          </div>
+        <div className="ports">
+          <div className="in">{this.getInPort()}</div>
+          <div className="out">{this.getOutPort()}</div>
         </div>
       </div>
     );
