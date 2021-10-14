@@ -4,17 +4,7 @@
   display: flex;
   cursor: move;
   overflow: hidden;
-  background-color: #fff !important;
-  background-size: 50px 50px;
-  background-image:
-          linear-gradient(0deg, transparent 24%, rgba(100, 100, 100, 0.05) 25%,
-          rgba(100, 100, 100, 0.05) 26%, transparent 27%, transparent 74%,
-          rgba(100, 100, 100, 0.05) 75%, rgba(100, 100, 100, 0.05) 76%,
-          transparent 77%, transparent),
-          linear-gradient(90deg, transparent 24%, rgba(100, 100, 100, 0.05) 25%,
-          rgba(100, 100, 100, 0.05) 26%, transparent 27%, transparent 74%,
-          rgba(100, 100, 100, 0.05) 75%,
-          rgba(100, 100, 100, 0.05) 76%, transparent 77%, transparent);
+  background-color: #000000 !important;
 
   .point {
     fill: rgba(white,0.5);
@@ -76,6 +66,7 @@
   path{
     fill:none;
     pointer-events:all;
+    stroke: #2f3ba7;
 
     &.selected {
       stroke: rgb(0,192,255) !important;
@@ -85,11 +76,27 @@
   }
 
   .port {
-    width: 15px;
-    height: 15px;
-    background: rgba(white,0.1);
+    background: transparent;
+    width: 13px;
+    height: 13px;
+    box-sizing: border-box;
+    padding: 3px;
+    transition: all .3s ease-in-out;
     &:hover,&.selected {
-      background: rgb(192,255,0);
+      background: #2f3ba7;
+    }
+    &:hover .visible-port, &.selected .visible-port {
+      background: #2f3ba7;
+    }
+    .visible-port {
+      width: 3px;
+      height: 3px;
+      background: #FFFFFF;
+      border: 2px solid #2f3ba7;
+      transition: all .3s ease-in-out;
+      &:hover,&.selected {
+        background: #2f3ba7;
+      }
     }
   }
 

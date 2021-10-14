@@ -4,8 +4,13 @@ import { ImageNodeModel } from './ImageNodeModel';
 
 export class ImageNodeWidget extends React.Component {
   static defaultProps = {
-    node: null,
-    color: 'rgb(224, 98, 20)'
+    node: {
+      name: '',
+      image: {
+        src: '',
+        alt: ''
+      }
+    }
   };
 
   onRemove() {
@@ -37,28 +42,25 @@ export class ImageNodeWidget extends React.Component {
   }
 
   render() {
-    const { node, displayOnly, color: displayColor } = this.props;
-    const { name, color } = node;
-    const style = {};
-    if (color || displayColor) {
-      style.background = color || displayColor;
-    }
+    const { node, displayOnly } = this.props;
+    const { title, image } = node.content;
 
     return (
-      <div className='basic-node' style={style}>
-        <div className='title'>
-          <div className='name'>
-            image
-          </div>
-          {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
-        </div>
-        <div className='ports'>
-          <div className='in'>
-            {this.getInPort()}
-          </div>
-          <div className='out'>
+      <div className='image-node'>
+        <div className="node-graphic">
+          {!displayOnly ? <div className='in'>
+              {this.getInPort()}
+            </div> : null }
+            <div className="node-content">
+              <img src={ "assets/" + image.src } alt={ image.alt } /> 
+              
+            </div>
+          {!displayOnly ? <div className='out'>
             {this.getOutPort()}
-          </div>
+          </div> : null }
+        </div>
+        <div className='name'>
+          { title }{!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
         </div>
       </div>
     );
